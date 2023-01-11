@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <h1 th:text="'Welcome, '  + ${currentUser}"/>
+    <p>Click the button below to either check in or check out to record your time.</p>
+    <span th:if="${user.isCheckedIn() == true}">
+        <form action="#" th:action="@{/greeting}" th:object="${formEntity}" method="post">
+            <input type="submit" value="Check Out" />
+        </form>
+    </span>
+
+    <span th:unless="${user.isCheckedIn() == true}">
+    <form action="#" th:action="@{/greeting}" th:object="${formEntity}" method="post">
+        <input type="submit" value="Check In" />
+    </form>
+    </span>
+
+
+
+</body>
+</html>
